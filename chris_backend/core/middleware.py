@@ -1,5 +1,6 @@
 
 from django.http import HttpResponse
+from chris_backend.config.settings.common import MIDDLEWARE
 from rest_framework import status
 from rest_framework.renderers import JSONRenderer
 
@@ -36,6 +37,7 @@ class ResponseMiddleware(object):
 
     def __init__(self, get_response):
         self.get_response = get_response
+        print(MIDDLEWARE)
 
     def __call__(self, request):
         return self.get_response(request)

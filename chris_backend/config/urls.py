@@ -31,7 +31,7 @@ urlpatterns = [
          plugin_admin_views.ComputeResourceAdminList.as_view(),
          name='admin-computeresource-list'),
 
-    path('api/', include('core.api')),
+    path('api/', include('core.api')), ## this maps to all the paths in the core/api.py
 ]
 
 if settings.DEBUG:

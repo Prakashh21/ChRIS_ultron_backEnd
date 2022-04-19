@@ -10,10 +10,13 @@ Local settings
 
 from .common import *  # noqa
 from core.swiftmanager import SwiftManager
+# from corsheaders.defaults import default_methods
+
 
 # Normally you should not import ANYTHING from Django directly
 # into your settings, but ImproperlyConfigured is an exception.
 from django.core.exceptions import ImproperlyConfigured
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -138,7 +141,7 @@ COMPUTE_RESOURCE_URL = 'http://pfcon.remote:30005/api/v1/'
 # corsheaders
 # ------------------------------------------------------------------------------
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_EXPOSE_HEADERS = ['Allow', 'Content-Type', 'Content-Length']
+CORS_EXPOSE_HEADERS = ['Allow', 'Content-Length']
 
 
 # Celery settings
