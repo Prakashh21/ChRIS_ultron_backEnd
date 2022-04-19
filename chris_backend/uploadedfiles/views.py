@@ -1,5 +1,6 @@
 
 import logging
+from urllib import response
 
 from django.conf import settings
 from django.http import FileResponse
@@ -77,6 +78,7 @@ class UploadedFileDetail(generics.RetrieveUpdateDestroyAPIView):
         Overriden to append a collection+json template.
         """
         response = super(UploadedFileDetail, self).retrieve(request, *args, **kwargs)
+        print(response,type(response),5)
         template_data = {"upload_path": ""}
         return services.append_collection_template(response, template_data)
 
@@ -130,4 +132,15 @@ class UploadedFileResource(generics.GenericAPIView):
         Overriden to be able to make a GET request to an actual file resource.
         """
         user_file = self.get_object()
-        return FileResponse(user_file.fname)
+        print(user_file,type(user_file))
+        response = FileResponse(user_file.fname)
+        response["content-length"] = len(list(response.streaming_content)[0])
+        # response["abc"] = 16
+        # print(user_file)
+        
+        # for i in response.streaming_content:
+        #     print(response.streaming_content)
+            # next(response.streaming_content)
+        # print(len(list(response.streaming_content)[0]))
+        
+        return response
